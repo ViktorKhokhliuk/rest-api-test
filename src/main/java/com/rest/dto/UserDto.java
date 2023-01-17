@@ -1,11 +1,13 @@
 package com.rest.dto;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Value;
 
-@Data
+@Value
+@Builder
 public class UserDto {
 
-    private String firstName;
-    private String lastName;
-    private String patronymic;
+    String firstName;
+    String lastName;
+    String patronymic;
 }

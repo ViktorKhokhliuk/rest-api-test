@@ -15,14 +15,22 @@ public class DefaultExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponseDto> handleException(EntityNotFoundException exception) {
-        ErrorResponseDto errorResponseDto = new ErrorResponseDto(HttpStatus.NOT_FOUND.value(), exception.getMessage(), LocalDateTime.now());
+        ErrorResponseDto errorResponseDto = ErrorResponseDto.builder()
+                .code(HttpStatus.NOT_FOUND.value())
+                .message(exception.getMessage())
+                .timeStamp(LocalDateTime.now())
+                .build();
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
     public ResponseEntity<ErrorResponseDto> handleException(UniqueFullNameException exception) {
-        ErrorResponseDto errorResponseDto = new ErrorResponseDto(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), LocalDateTime.now());
+        ErrorResponseDto errorResponseDto = ErrorResponseDto.builder()
+                .code(HttpStatus.BAD_REQUEST.value())
+                .message(exception.getMessage())
+                .timeStamp(LocalDateTime.now())
+                .build();
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
     }

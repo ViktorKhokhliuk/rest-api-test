@@ -22,7 +22,6 @@ public class UserController {
     private final UserService userService;
     private final UserValidator userValidator;
 
-
     @GetMapping("/{id}")
     public UserDto findById(@PathVariable(name = "id") Long id) {
         return userService.findById(id);

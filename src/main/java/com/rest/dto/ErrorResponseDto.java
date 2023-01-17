@@ -1,13 +1,15 @@
 package com.rest.dto;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Value;
 
 import java.time.LocalDateTime;
 
-@Data
+@Value
+@Builder
 public class ErrorResponseDto {
 
-    private final Integer code;
-    private final String message;
-    private final LocalDateTime timeStamp;
+    Integer code;
+    String message;
+    LocalDateTime timeStamp;
 }
